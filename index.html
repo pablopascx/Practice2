@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Web Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="calculator" aria-busy="false">
+    <h1>Web Calculator</h1>
+
+    <h2 id="info" class="big" title="Info about the number">Information about the number</h2>
+
+    <div class="field">
+      <label for="display">Number or CSV list (e.g. 3, 1.5, -2)</label>
+      <div class="display-wrap">
+        <input type="text" id="display" autocomplete="off" inputmode="text" aria-describedby="message pending">
+        <span class="spinner" aria-hidden="true"></span>
+      </div>
+      <p id="pending" class="pending" aria-live="polite"></p>
+    </div>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+
+    <section aria-labelledby="g-unary">
+      <h3 id="g-unary">Unary operations</h3>
+      <div class="grid">
+        <button type="button" id="square" data-code="KeyS" onclick="square()">Square</button>
+        <button type="button" id="cube" data-code="KeyU" onclick="cube()">Cube</button>
+        <button type="button" id="sqrt" data-code="KeyQ" onclick="sqrt()">Square root</button>
+        <button type="button" id="modulo" data-code="KeyO" onclick="mod()">Modulus</button>
+        <button type="button" id="factorial" data-code="KeyF" onclick="fact()">Factorial</button>
+      </div>
+      <div class="field inline">
+        <label for="exponent">Exponent</label>
+        <input type="text" id="exponent" autocomplete="off" inputmode="decimal" placeholder="e.g. 4">
+        <button type="button" id="power" data-code="KeyP" onclick="power()">Power</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="g-binary">
+      <h3 id="g-binary">Binary operations</h3>
+      <div class="grid">
+        <button type="button" id="addition" data-code="KeyA" onclick="addition()">+ Addition</button>
+        <button type="button" id="subtraction" data-code="KeyN" onclick="subtraction()">&minus; Subtraction</button>
+        <button type="button" id="multiplication" data-code="KeyM" onclick="multiplication()">&times; Multiplication</button>
+        <button type="button" id="division" data-code="KeyD" onclick="division()">&divide; Division</button>
+        <button type="button" id="equal" data-code="KeyE" class="accent" onclick="eq()">= Equal</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="g-csv">
+      <h3 id="g-csv">CSV operations</h3>
+      <div class="grid">
+        <button type="button" id="sum" data-code="Digit1" onclick="sum()">Sum</button>
+        <button type="button" id="sort" data-code="Digit2" onclick="sort()">Sort</button>
+        <button type="button" id="reverse" data-code="Digit3" onclick="reverse()">Reverse</button>
+        <button type="button" id="removelast" data-code="Digit4" onclick="removelast()">Remove last</button>
+        <button type="button" id="average" data-code="Digit5" onclick="average()">Average</button>
+      </div>
+      <div class="field inline">
+        <label for="remove">Values to delete</label>
+        <input type="text" id="remove" autocomplete="off" placeholder="e.g. 2, 7">
+        <button type="button" id="removeelements" data-code="Digit6" onclick="removeelements()">Remove elements</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="g-util">
+      <h3 id="g-util">Utilities</h3>
+      <div class="grid">
+        <button type="button" id="clear" data-code="KeyX" onclick="clearAll()">Clear</button>
+        <button type="button" id="download" data-code="KeyL" onclick="downloadLog()">Download error log</button>
+      </div>
+    </section>
+
+    <p class="hint">Keyboard: <kbd>Tab</kbd> to move between controls, <kbd>Enter</kbd> = equal, <kbd>Esc</kbd> = clear.
+      Every button has an <kbd>Alt</kbd> + key shortcut (shown in its tooltip).</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
